@@ -44,12 +44,12 @@ type BooksDBGetFilter struct {
 	Genre    *int
 }
 
-func CreateDB(dialector gorm.Dialector) (db *gorm.DB, err error) {
+func OpenDB(dialector gorm.Dialector) (db *gorm.DB, err error) {
 	return gorm.Open(dialector, &gorm.Config{})
 }
 
 func CreateApi(dialector gorm.Dialector) (api *DBApi, err error) {
-	db, lerr := CreateDB(dialector)
+	db, lerr := OpenDB(dialector)
 	if lerr != nil {
 		return nil, lerr
 	}

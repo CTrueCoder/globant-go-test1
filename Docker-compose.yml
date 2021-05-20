@@ -9,8 +9,12 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: pass)
     container_name: golang_db
+    volumes:
+      - db_mysql:/var/lib/mysql
     ports:
       - "3306:3306"
+    networks: 
+      - gostacknet
     tty: true
   app:
     build:
@@ -20,7 +24,15 @@ services:
       - "./go:/go"
     ports:
       - "8080:8080"
+    networks: 
+      - gostacknet
     tty: true
-    depends_on:
-      - db
     restart: on-failure
+
+volumes:
+  go:
+  db_mysql:
+
+networks:
+  gostacknet:
+    driver: bridge

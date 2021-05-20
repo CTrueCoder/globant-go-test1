@@ -19,7 +19,7 @@ import (
 )
 
 func init() {
-	connstr := "admin:pass)@tcp(127.0.0.1:3306)/globant_books?charset=utf8mb4&parseTime=True&loc=Local"
+	connstr := "admin:pass)@tcp(db:3306)/globant_books?charset=utf8mb4&parseTime=True&loc=Local"
 	dbapi.CreateApiLocal(mysql.Open(connstr))
 
 	_, file, _, _ := runtime.Caller(0)

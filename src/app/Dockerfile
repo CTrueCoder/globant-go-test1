@@ -5,7 +5,7 @@ WORKDIR /src
 COPY conf conf/
 COPY controllers controllers/
 COPY dbapi dbapi/
-COPY models models/
+#COPY models models/
 COPY routers routers/
 COPY static static/
 COPY tests tests/
