@@ -13,9 +13,10 @@ COPY views views/
 COPY main.go .
 COPY go.mod .
 
-#RUN go mod donwload
-RUN go mod tidy
-RUN go build
+#RUN go mod tidy
+RUN go mod download
+#RUN go build
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o globantapp
 
 EXPOSE 8080
 CMD ["./globantapp"]
