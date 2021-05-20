@@ -10,8 +10,7 @@ services:
       MYSQL_PASSWORD: pass)
     container_name: golang_db
     volumes:
-      - db_mysql: 
-        - /var/lib/mysql
+      - "./db_mysql:/var/lib/mysql"
     ports:
       - "3306:3306"
     networks: 
