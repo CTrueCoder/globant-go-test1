@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: pass)
     container_name: golang_db
     volumes:
-      - db_mysql:/var/lib/mysql
+      - db_mysql: /var/lib/mysql
     ports:
       - "3306:3306"
     networks: 
@@ -21,7 +21,7 @@ services:
       context: ./src/app
     container_name: golang_app
     volumes:
-      - "./go:/go"
+      - "./go_app:/go"
     ports:
       - "8080:8080"
     networks: 
@@ -30,7 +30,7 @@ services:
     restart: on-failure
 
 volumes:
-  go:
+  go_app:
   db_mysql:
 
 networks:
